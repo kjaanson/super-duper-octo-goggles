@@ -34,3 +34,22 @@ API uses models from `api/model_pickles` directory for predictions on data. Each
   * `predict` method that takes in array of features to perform prediction on. This must be 2D array with size `(n_samples, n_features)`
   * `_desc_` human readable string for the model description
   * `_features_` list of feature names and their order that should be passed on to `predict` method for each sample
+
+### API endpoints
+
+  * `GET models/` - displays list of models, descriptions and their input feature orders
+
+Sample API call
+```
+curl -X GET http://localhost:5000/models
+```
+
+  * `POST models/<modelname>/predict` - performs prediction on model using posted array of features
+
+Sample API call
+```
+curl -X POST \
+  http://localhost:5000/models/logreg/predict \
+  -H 'content-type: application/json' \
+  -d '[0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0]'
+```

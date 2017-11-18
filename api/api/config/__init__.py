@@ -8,6 +8,7 @@ except ImportError as e:
 
 
 class BaseConfig(BasePrivate):
+    MODELS_DIR = "api/model_pickles/"
     HOST = '0.0.0.0'
     PORT = 5000
 

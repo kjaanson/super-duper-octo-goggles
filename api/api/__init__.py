@@ -18,4 +18,5 @@ else:
     app.config.from_object('api.config.DevelopmentConfig')
 
 
+import api.errors
 import api.views
