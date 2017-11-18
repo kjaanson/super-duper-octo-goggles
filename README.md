@@ -37,16 +37,16 @@ API uses models from `api/model_pickles` directory for predictions on data. Each
 
 ### API endpoints
 
-  * `GET models/` - displays list of models, descriptions and their input feature orders
+#### `GET models/` - displays list of models, descriptions and their input feature orders
 
-#### Sample API call
+##### Sample API call
 ```
 curl -X GET http://localhost:5000/models
 ```
 
-  * `POST models/<modelname>/predict` - performs prediction on model using posted array of features
+#### `POST models/<modelname>/predict` - performs prediction on model using posted array of features
 
-#### Sample API call
+##### Sample API call
 ```
 curl -X POST \
   http://localhost:5000/models/logreg/predict \
