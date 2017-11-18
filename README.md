@@ -54,7 +54,6 @@ curl -X POST \
   -d '[0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1]'
 ```
 
-
 Code organisation
 -----------------
   * `api/` - Flask api code
@@ -64,3 +63,13 @@ Code organisation
   * `scripts/` - scripts for building models
   * `main.py` - main flask app
   * `Snakefile` - snakemake rulefile
+
+
+Thoughts and misgivings about the current code
+---------------------------------------------
+  * Great task!
+  * Current `modeling` module should be expanded more with more complicated preprocessing and model training logic.
+  For example training parameters could be passed as sklearn pipeline parameters.
+  * API should cache the same requests.
+  * Snakemake buildfile is perhaps overkill currently. However if number of possible models increases it will make
+  building and testing them easier.
