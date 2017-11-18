@@ -9,15 +9,12 @@ I have used pandas and sklearn for initial data transformation and model trainin
 Setup
 =====
 
+Install dependencies
 ```
 pip install -e requirements.txt
 ```
 
-Pipeline
-============
-
-Data wrangling, model training and deployment pipeline is done using `pandas`, `sklearn` and `snakemake`. To
-build model pickles for API run:
+Build models
 ```
 snakemake
 ```
