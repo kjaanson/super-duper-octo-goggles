@@ -1,6 +1,7 @@
 rule all_models:
     input:
-        "api/model_pickles/logreg.pickle"
+        "api/model_pickles/logreg.pickle",
+        "api/model_pickles/randforest.pickle"
 
 rule build_model:
     input:
