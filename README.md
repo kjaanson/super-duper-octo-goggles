@@ -3,8 +3,8 @@ Introduction
 
 Data transformation, model training and deployment task for Mindtitans.
 I have used pandas and sklearn for initial data transformation and model training. Trained models are pickeled and
- stored in `.\models` directory where they are read by API. Snakemake pipeline is used for running model retraining etc.
- Flask API is minimal and only gives the predicted classification (rating).
+ stored in `api\model_pickles` directory where they are read by API. Snakemake pipeline is used for running model
+ retraining etc. Flask API is minimal and only gives the predicted classification (rating).
 
 Setup
 =====
@@ -19,7 +19,7 @@ Pipeline
 Data wrangling, model training and deployment pipeline is done using `pandas`, `sklearn` and `snakemake`. To
 build model pickles for API run:
 ```
-snakemake api/model_pickles/logregression.pickle
+snakemake
 ```
 
 Deploying API
@@ -51,5 +51,15 @@ curl -X GET http://localhost:5000/models
 curl -X POST \
   http://localhost:5000/models/logreg/predict \
   -H 'content-type: application/json' \
-  -d '[0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0]'
+  -d '[0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1]'
 ```
+
+
+Code organisation
+-----------------
+  * `api/` - Flask api code
+  * `data/` - data
+  * `modeling/` - code for data parsing, wrangling and model training
+  * `scripts/` - scripts for building models
+  * `main.py` - main flask app
+  * `Snakefile` - snakemake rulefile

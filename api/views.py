@@ -51,7 +51,7 @@ def predict(modelname):
 
     predicted_class = model.predict(post_data).tolist()
 
-    return jsonify({'predicted_class':predicted_class})
+    return jsonify({'predicted_rating':predicted_class})
 
 
 
