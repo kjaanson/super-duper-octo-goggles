@@ -1,16 +1,8 @@
-
 from api import app, log
-
 from flask import jsonify, request
-
 import os
 import pickle
-
 import glob
-
-import numpy as np
-import pandas as pd
-
 from .errors import abort
 
 @app.route('/models', methods=['GET'])
@@ -57,7 +49,7 @@ def predict(modelname):
     if len(post_data)!=len(model._features_):
         abort(400, f"Number of presented features does not match the trained model.")
 
-    predicted_class = model.predict(np.array([post_data])).tolist()
+    predicted_class = model.predict(post_data).tolist()
 
     return jsonify({'predicted_class':predicted_class})
 

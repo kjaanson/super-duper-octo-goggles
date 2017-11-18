@@ -1,18 +1,10 @@
 
 import pandas as pd
 import numpy as np
-
 import os
-import sys
-
-from sklearn.linear_model import LogisticRegression
-import pickle
 
 class BaseModel():
-    """
-    Logistic regression model for restaurant rating prediction. Can be used for generating other models also if
-    _preprocessing and _trainmodel methods are overridden.
-    """
+    """Base model. Handles training data loading and preprocessing."""
 
     def __init__(self, datadir):
         self.datadir = datadir
@@ -76,9 +68,7 @@ class BaseModel():
         pass
 
     def predict(self, feature_array):
-        """Makes prediction based on the given feature array.
-        TODO add error check for feature number here.
-        """
+        """Makes prediction based on the given feature array."""
         np_array = np.array([feature_array])
 
         return self.model.predict(np_array)
