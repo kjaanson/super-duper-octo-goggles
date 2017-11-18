@@ -26,7 +26,7 @@ Deploying API
 =============
 After model(s) have been trained by pipeline run API:
 ```
-python api/main.py
+python main.py
 ```
 
 API uses models from `api/model_pickles` directory for predictions on data. Each should be pickled instance with the
@@ -58,6 +58,7 @@ curl -X POST \
 Code organisation
 -----------------
   * `api/` - Flask api code
+  * `api/model_pickles/` - directory containing trained pickled models
   * `data/` - data
   * `modeling/` - code for data parsing, wrangling and model training
   * `scripts/` - scripts for building models
