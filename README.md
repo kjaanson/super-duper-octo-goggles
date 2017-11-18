@@ -9,6 +9,8 @@ I have used pandas and sklearn for initial data transformation and model trainin
 Setup
 =====
 
+Code uses Python 3.6.
+
 Install dependencies
 ```
 pip install -e requirements.txt
