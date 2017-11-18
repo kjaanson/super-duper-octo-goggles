@@ -72,4 +72,4 @@ Thoughts and misgivings about the current code
   For example training parameters could be passed as sklearn pipeline parameters.
   * API should cache the same requests.
   * Snakemake buildfile is perhaps overkill currently. However if number of possible models increases it will make
-  building and testing them easier.
+  building/testing/comparing them easier.
