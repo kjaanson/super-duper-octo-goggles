@@ -69,6 +69,6 @@ Thoughts and misgivings about the current code
   * Great task!
   * Current `modeling` module should be expanded more with more complicated preprocessing and model training logic.
   For example training parameters could be passed as sklearn pipeline parameters.
-  * API should cache the same requests.
+  * API should cache identical requests.
   * Snakemake buildfile is perhaps overkill currently. However if number of possible models increases it will make
   building/testing/comparing them easier.
