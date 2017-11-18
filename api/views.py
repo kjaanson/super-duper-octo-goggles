@@ -5,6 +5,7 @@ import pickle
 import glob
 from .errors import abort
 
+
 @app.route('/models', methods=['GET'])
 def models():
     """Returns list of models that are served by the API."""
@@ -12,21 +13,21 @@ def models():
 
     models = list()
 
-    for modelpicklefile in glob.glob(os.path.join(app.config["MODELS_DIR"],"*.pickle")):
+    for modelpicklefile in glob.glob(os.path.join(app.config["MODELS_DIR"], "*.pickle")):
         basename = os.path.basename(modelpicklefile)
         modelname = os.path.splitext(basename)[0]
 
         model = pickle.load(open(modelpicklefile, "rb"))
 
-        log.info(f'\nLoaded model {basename} \nModelname: {modelname}\nDesc: {model._desc_} \nInput features: {model._features_}')
+        log.info(
+            f'\nLoaded model {basename} \nModelname: {modelname}\nDesc: {model._desc_} \nInput features: {model._features_}')
 
-        models.append({'modelname':modelname,
-                       'description':model._desc_,
-                       'input_features':model._features_})
-
-
+        models.append({'modelname': modelname,
+                       'description': model._desc_,
+                       'input_features': model._features_})
 
     return jsonify(models)
+
 
 @app.route('/models/<modelname>/predict', methods=['POST'])
 def predict(modelname):
@@ -35,7 +36,7 @@ def predict(modelname):
     """
 
     avail_models = [os.path.splitext(os.path.basename(filename))[0]
-                    for filename in glob.glob(os.path.join(app.config["MODELS_DIR"],"*.pickle"))]
+                    for filename in glob.glob(os.path.join(app.config["MODELS_DIR"], "*.pickle"))]
 
     log.info(f"Available models: {avail_models}")
 
@@ -46,13 +47,9 @@ def predict(modelname):
 
     post_data = request.get_json()
 
-    if len(post_data)!=len(model._features_):
+    if len(post_data) != len(model._features_):
         abort(400, f"Number of presented features does not match the trained model.")
 
     predicted_class = model.predict(post_data).tolist()
 
-    return jsonify({'predicted_rating':predicted_class})
-
-
-
-
+    return jsonify({'predicted_rating': predicted_class})

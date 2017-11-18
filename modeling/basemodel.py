@@ -1,7 +1,7 @@
-
 import pandas as pd
 import numpy as np
 import os
+
 
 class BaseModel():
     """Base model. Handles training data loading and preprocessing."""
@@ -17,7 +17,8 @@ class BaseModel():
     def _load_data(self):
         """Loads data from files and stores in dataframes."""
         geoplaces = pd.read_csv(os.path.join(self.datadir, "geoplaces2.csv"), index_col=0)
-        self.geoplaces = pd.DataFrame(geoplaces, columns=["smoking_area", "other_services", "dress_code", "accessibility"])
+        self.geoplaces = pd.DataFrame(geoplaces,
+                                      columns=["smoking_area", "other_services", "dress_code", "accessibility"])
 
         parking = pd.read_csv(os.path.join(self.datadir, "chefmozparking.csv"), index_col=0)
         self.parking = parking
@@ -54,7 +55,7 @@ class BaseModel():
             df_dress_code,
             df_accesibility,
             df_parking_lot
-            ], axis=1)
+        ], axis=1)
 
         self.df_y = df[["rating"]]
 
