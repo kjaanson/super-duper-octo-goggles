@@ -9,9 +9,10 @@ rule build_model:
         "data/geoplaces2.csv",
         "data/chefmozparking.csv",
         "data/rating_final.csv",
-        datadir="data/",
-        script="models/{modelname}.py"
+    params:
+        module="modeling.{modelname}",
+        datadir="data/"
     output:
         picklefile="api/model_pickles/{modelname}.pickle"
     shell:
-        "python {input.script} {input.datadir} {output.picklefile}"
+        "python -m {params.module} {params.datadir} {output.picklefile}"

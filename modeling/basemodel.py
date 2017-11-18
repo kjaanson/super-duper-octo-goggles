@@ -8,7 +8,7 @@ import sys
 from sklearn.linear_model import LogisticRegression
 import pickle
 
-class LogRegModel():
+class BaseModel():
     """
     Logistic regression model for restaurant rating prediction. Can be used for generating other models also if
     _preprocessing and _trainmodel methods are overridden.
@@ -72,9 +72,8 @@ class LogRegModel():
         return list(self.df_X.columns)
 
     def _trainmodel(self):
-        """Trains model."""
-        model = LogisticRegression()
-        self.model = model.fit(self.df_X.values, y = self.df_y.values)
+        """Placeholder method for training model. Should be overridden in child classes."""
+        pass
 
     def predict(self, feature_array):
         """Makes prediction based on the given feature array.
@@ -87,18 +86,3 @@ class LogRegModel():
     @property
     def _desc_(self):
         return self.__doc__
-
-if __name__ == '__main__':
-
-    dir = sys.argv[1]
-    output_modelfile = sys.argv[2]
-
-    model = LogRegModel(dir)
-
-    # TODO print model score et into log
-
-    with open(os.path.join(output_modelfile),"wb") as model_file:
-        pickle.dump(model, model_file)
-
-
-
