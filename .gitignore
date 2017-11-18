@@ -1,4 +1,6 @@
 .idea/*
+.snakemake/*
+/api/model_pickles/*
 /**/__pycache__
 /**/.ipynb_checkpoints
 api.log

@@ -3,7 +3,7 @@ Introduction
 
 Data transformation, model training and deployment task for Mindtitans.
 I have used pandas and sklearn for initial data transformation and model training. Trained models are pickeled and
- stored in `.\models` directory where they are read by api. Snakemake pipeline is used for running model retraining etc.
+ stored in `.\models` directory where they are read by API. Snakemake pipeline is used for running model retraining etc.
  Flask API is minimal and only gives the predicted classification (rating).
 
 Setup
@@ -39,14 +39,14 @@ API uses models from `api/model_pickles` directory for predictions on data. Each
 
   * `GET models/` - displays list of models, descriptions and their input feature orders
 
-Sample API call
+#### Sample API call
 ```
 curl -X GET http://localhost:5000/models
 ```
 
   * `POST models/<modelname>/predict` - performs prediction on model using posted array of features
 
-Sample API call
+#### Sample API call
 ```
 curl -X POST \
   http://localhost:5000/models/logreg/predict \
